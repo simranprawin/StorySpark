@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff8f0">
+    <title>StorySpark | Random Story Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo"><span>✦</span> StorySpark</a>
+        <span class="tagline">A little spark. A whole new story.</span>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-badge">✨ YOUR IMAGINATION STARTS HERE</div>
+            <h1>Every great story<br>starts with a <span>spark.</span></h1>
+            <p>Choose your ingredients and let StorySpark create a magical story just for you.</p>
+        </section>
+
+        <section class="generator-layout">
+
+            <div class="settings-card">
+                <div class="card-heading">
+                    <div>
+                        <span class="small-label">MAKE IT YOURS</span>
+                        <h2>Build your story</h2>
+                    </div>
+                    <span class="spark-icon">✧</span>
+                </div>
+
+                <div class="field">
+                    <label for="genre">📚 Story genre</label>
+                    <select id="genre">
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Fairy Tale">Fairy Tale</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="character">🧑 Main character</label>
+                    <select id="character">
+                        <option value="a curious young explorer">Young Explorer</option>
+                        <option value="a brave princess">Brave Princess</option>
+                        <option value="a clever detective">Clever Detective</option>
+                        <option value="a mysterious stranger">Mysterious Stranger</option>
+                        <option value="a shy inventor">Shy Inventor</option>
+                        <option value="a friendly robot">Friendly Robot</option>
+                        <option value="a talking cat">Talking Cat</option>
+                        <option value="a fearless astronaut">Fearless Astronaut</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="setting">🌍 Story setting</label>
+                    <select id="setting">
+                        <option value="an enchanted forest">Enchanted Forest</option>
+                        <option value="a forgotten kingdom">Forgotten Kingdom</option>
+                        <option value="a futuristic city">Futuristic City</option>
+                        <option value="a small seaside village">Seaside Village</option>
+                        <option value="a mysterious old mansion">Old Mansion</option>
+                        <option value="a distant planet">Distant Planet</option>
+                        <option value="a magical library">Magical Library</option>
+                        <option value="a hidden underwater world">Underwater World</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="mood">💫 Story mood</label>
+                    <select id="mood">
+                        <option value="magical and exciting">Magical & Exciting</option>
+                        <option value="funny and cheerful">Funny & Cheerful</option>
+                        <option value="dark and mysterious">Dark & Mysterious</option>
+                        <option value="heartwarming and emotional">Heartwarming</option>
+                        <option value="suspenseful and thrilling">Suspenseful</option>
+                        <option value="peaceful and inspiring">Peaceful & Inspiring</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="length">📖 Story length</label>
+                    <select id="length">
+                        <option value="short">Short</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="long">Long</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="idea">💡 Your own idea <span class="optional">(optional)</span></label>
+                    <textarea id="idea" rows="3" placeholder="Example: A secret door appears every midnight..."></textarea>
+                </div>
+
+                <button id="generateBtn" class="generate-btn">
+                    <span>✨</span> Generate My Story
+                </button>
+                <button id="surpriseBtn" class="surprise-btn">🎲 Surprise Me</button>
+            </div>
+
+            <div class="result-column">
+                <section class="story-card">
+                    <div class="story-top">
+                        <span class="small-label">✦ YOUR STORY ✦</span>
+                        <span id="storyGenre" class="genre-tag">Waiting for magic</span>
+                    </div>
+
+                    <div id="emptyState" class="empty-state">
+                        <div class="book-illustration">📖</div>
+                        <h2>Your next adventure awaits!</h2>
+                        <p>Choose your story ingredients and click Generate My Story.</p>
+                    </div>
+
+                    <article id="storyResult" class="story-result hidden">
+                        <h2 id="storyTitle"></h2>
+                        <div id="storyText" class="story-text"></div>
+                    </article>
+
+                    <div class="story-actions">
+                        <button id="copyBtn" class="action-btn" disabled>📋 Copy</button>
+                        <button id="favoriteBtn" class="action-btn" disabled>♡ Save</button>
+                        <button id="regenerateBtn" class="action-btn" disabled>🔄 Again</button>
+                    </div>
+                </section>
+
+                <section class="library-card">
+                    <div class="library-heading">
+                        <div>
+                            <span class="small-label">YOUR COLLECTION</span>
+                            <h2>My Story Library</h2>
+                        </div>
+                        <span class="library-icon">📚</span>
+                    </div>
+
+                    <div class="tabs">
+                        <button class="tab active" data-tab="history">Recent Stories</button>
+                        <button class="tab" data-tab="favorites">Favorites <span id="favoriteCount">0</span></button>
+                    </div>
+
+                    <div id="libraryList" class="library-list">
+                        <p class="library-empty">Your stories will appear here.</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made with <span>♥</span> and a little imagination · StorySpark © 2026</p>
+        </footer>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
